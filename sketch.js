@@ -3,7 +3,7 @@ let bst = [], bxbeg = [], bybeg = [], bxmid = [], bymid = [], bxend = [], byend 
 var num, flux, bend;
 
 function setup() {
-createCanvas(windowWidth, windowHeight);
+createCanvas(displayWidth, displayHeight);
   num = int(random(width/200,width/150));
   flux = 1
   bend = random(num/10,num/5);
