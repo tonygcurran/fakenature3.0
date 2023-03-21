@@ -5,7 +5,7 @@ var num, flux, bend;
 function setup() {
 createCanvas(windowWidth, windowHeight);
   num = int(random(width/200,width/150));
-  flux = 0.5
+  flux = 1
   bend = random(num/10,num/5);
  cset();
   mset();
