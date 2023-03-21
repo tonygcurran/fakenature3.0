@@ -3,10 +3,10 @@ let bst = [], bxbeg = [], bybeg = [], bxmid = [], bymid = [], bxend = [], byend 
 var num, flux, bend;
 
 function setup() {
-createCanvas(displayWidth, displayHeight);
+createCanvas(windowWidth, windowHeight);
   num = int(random(width/200,width/150));
-  flux = 1
-  bend = random(num/10,num/5);
+  flux = 0.5
+  bend = random(num/3, num);
  cset();
   mset();
   yset();
@@ -38,13 +38,13 @@ function gset(){
   ggraphics = createGraphics(windowWidth, windowHeight);
    ggraphics.blendMode(BLEND);
   jita = flux;
-   jit = random(10);
+   jit = random(100);
   for (i = 0; i<num; i++){
   gst[i] = random((height/10), (height/10)+100);
          gxbeg[i] = -20
   gybeg[i] = random(height);
-  gxmid[i] = width/2+random(-jit,jit)+gst[1];
-  gymid[i] = gybeg[i] + random(-20,20);
+  gxmid[i] = random(width);
+  gymid[i] = gybeg[i] + random(-20,20)+gst[i];
   gxend[i] = width+50;
 gyend[i] = height/2+random(-50,50);
   }
@@ -70,8 +70,8 @@ function rset(){
   rst[i] = random((height/10), (height/10)+100);
          rxbeg[i] = -20
   rybeg[i] = random(height);
-  rxmid[i] = width/2+random(-jit,jit)+rst[1];
-  rymid[i] = rybeg[i] + random(-20,20);
+  rxmid[i] = random(width);
+  rymid[i] = rybeg[i] + random(-20,20)+rst[i];
   rxend[i] = width+50;
 ryend[i] = height/2+random(-50,50);
   }
@@ -93,15 +93,15 @@ function mset(){
    mgraphics = createGraphics(windowWidth, windowHeight);
    mgraphics.blendMode(BLEND);
   jita = flux;
-   jit = random(10);
+   jit = random(100);
   for (i = 0; i<num; i++){
     
     //mst = stroke for magenta
   mst[i] = random((height/10), (height/10)+100);
          mxbeg[i] = -20
   mybeg[i] = random(height);
-  mxmid[i] = width/2+random(-jit,jit)+mst[1];
-  mymid[i] = mybeg[i] + random(-20,20);
+  mxmid[i] = width/2+random(-jit,jit);
+  mymid[i] = mybeg[i] + random(-20,20)+mst[i];
   mxend[i] = width+50;
 myend[i] = height/2+random(-50,50);
   }
@@ -126,8 +126,8 @@ function bset(){
   bst[i] = random((height/10), (height/10)+100);
          bxbeg[i] = -20
   bybeg[i] = random(height);
-  bxmid[i] = width/2+random(-jit,jit)+bst[1];
-  bymid[i] = bybeg[i] + random(-20,20);
+  bxmid[i] = random(width);
+  bymid[i] = bybeg[i] + random(-20,20)+bst[i];
   bxend[i] = width+50;
 byend[i] = height/2+random(-50,50);
   }
@@ -154,8 +154,8 @@ function yset(){
   yst[i] = random((height/10), (height/10)+100);
          yxbeg[i] = -20
   yybeg[i] = random(height);
-  yxmid[i] = width/2+random(-jit,jit)+yst[1];
-  yymid[i] = yybeg[i] + random(-20,20);
+  yxmid[i] = random(width);
+  yymid[i] = yybeg[i] + random(-20,20)+yst[i];
   yxend[i] = width+50;
 yyend[i] = height/2+random(-50,50);
   }
@@ -181,8 +181,8 @@ function cset(){
   cst[i] = random((height/10), (height/10)+100);
          cxbeg[i] = -20
   cybeg[i] = random(height);
-  cxmid[i] = width/2+random(-jit,jit)+cst[1];
-  cymid[i] = cybeg[i] + random(-20,20);
+  cxmid[i] = random(width);
+  cymid[i] = cybeg[i] + random(-20,20)+cst[i];
   cxend[i] = width+50;
 cyend[i] = height/2+random(-50,50);
   }
@@ -256,7 +256,7 @@ cst[i] += random(-jita,jita);
   }
   
    if (cxmid[i] <= 0 || cxmid[i] >= width){
-    cxmid[i] = height/2+random(-50,50);
+    cxmid[i] = width/2+random(-50,50);
   }
   if (cyend[i] <= 0 || cyend[i] >= width){
     cyend[i] = height/2+random(-50,50);
@@ -315,7 +315,7 @@ gst[i] += random(-jita,jita);
   }
   
    if (gxmid[i] <= 0 || gxmid[i] >= width){
-    gxmid[i] = height/2+random(-50,50);
+    gxmid[i] = width/2+random(-50,50);
   }
   if (gyend[i] <= 0 || gyend[i] >= width){
     gyend[i] = height/2+random(-50,50);
@@ -382,7 +382,7 @@ rst[i] += random(-jita,jita);
   }
   
    if (rxmid[i] <= 0 || rxmid[i] >= width){
-    rxmid[i] = height/2+random(-50,50);
+    rxmid[i] = width/2+random(-50,50);
   }
   if (ryend[i] <= 0 || ryend[i] >= width){
     ryend[i] = height/2+random(-50,50);
@@ -446,7 +446,7 @@ bst[i] += random(-jita,jita);
   }
   
    if (bxmid[i] <= 0 || bxmid[i] >= width){
-    bxmid[i] = height/2+random(-50,50);
+    bxmid[i] = width/2+random(-50,50);
   }
   if (byend[i] <= 0 || byend[i] >= width){
     byend[i] = height/2+random(-50,50);
@@ -519,7 +519,7 @@ yst[i] += random(-jita,jita);
   }
   
    if (yxmid[i] <= 0 || yxmid[i] >= width){
-    yxmid[i] = height/2+random(-50,50);
+    yxmid[i] = width/2+random(-50,50);
   }
   if (yyend[i] <= 0 || yyend[i] >= width){
     yyend[i] = height/2+random(-50,50);
@@ -579,7 +579,7 @@ mst[i] += random(-jita,jita);
   }
   
    if (mxmid[i] <= 0 || mxmid[i] >= width){
-    mxmid[i] = height/2+random(-50,50);
+    mxmid[i] = random(width);
   }
   if (myend[i] <= 0 || myend[i] >= width){
     myend[i] = height/2+random(-50,50);
